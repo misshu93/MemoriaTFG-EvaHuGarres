@@ -182,8 +182,8 @@ just before submitting.
 
 En la última década, el número de dispositivos electrónicos(móviles, tabletas, ordenadores...) ha aumentado exponencialmente, aumentando así el número de usuarios que los consumen. Es por ello que hoy en día y cada vez más, se va concienciando a los alumnos en las escuelas la importancia de la programación para un futuro a corto y largo plazo aunque uno no se vaya a dedicar específicamente a ello en un futuro. Aprender a programar es una manera ideal de estructurar los procesos mentales, ayudando a asentar conocimientos que ya se tenían y a aprender conceptos nuevos.
 
-Un año hace desde que nació Dr. Scratch. La idea principal del proyecto era enseñar programación a los niños de forma divertida. 
-% Me gustaría contar aquí de forma "bonita" cómo surgió esa idea.%
+Un año hace desde que nació Dr. Scratch. Fue fruto de la inspiración de mi tutor de proyecto, Gregorio Robles, y mi co-tutor, Jesús Moreno, cuando buscaban un campo de investigación en el que basar su doctorado y pensaron que, ¿por qué no enseñar programación a los niños de forma divertida? 
+
 Desde entonces, la plataforma ha cambiado mucho según se han ido haciendo encuestas y talleres. Gracias a la comunidad de usuarios que usan y/o han usado Dr. Scratch hemos podido seguir mejorando y creciendo en cada actualización. 
 
 
@@ -198,14 +198,13 @@ Desde entonces, la plataforma ha cambiado mucho según se han ido haciendo encues
 
 \section{Objetivo general}
 
-El objetivo de este proyecto es aportar realimentación sobre el nivel de pensamiento computacional de los proyectos realizados en el lenguaje de programación Scratch así como
-mostrar el seguimiento de los proyectos analizados por una organización y un profesor. 
+El objetivo de este proyecto es aportar realimentación sobre el nivel de pensamiento computacional de los proyectos realizados en el lenguaje de programación Scratch, enseñar buenas prácticas de programación y ofrecer una herramienta de apoyo para organizaciones y profesores a la hora de evaluar y ver la evolución de sus alumnos.
 
 
 \section{Objetivos específicos}
 \begin{itemize}
-  \item Mejorar los dashboards mostrados al analizar, con el fin de simplificar lo máximo posible la información mostrada al usuario, teniendo en cuenta que está dirigida principalmente a niños.
-  \item Web multilenguaje: traducir la web a las diferentes lenguas del mundo.
+  \item Mejorar los paneles mostrados al analizar, con el fin de simplificar lo máximo posible la información mostrada al usuario, teniendo en cuenta que está dirigida principalmente a niños de distinta edad y nivel de pensamiento computacional.
+  \item Web multilenguaje: traducir la web a las diferentes lenguas del mundo para acercarnos lo máximo posible al usuario final. Para ello, hemos contado con varios voluntarios de distintos países	 que han mostrado su interés en traducir la web a su idioma.
   \item Migrar el servidor a la nube para un ofrecer un mejor rendimiento.
   \item Registro de usuarios. Crear cuentas de organizaciones, profesores y alumnos, donde se pueda llevar un seguimiento de los proyectos analizados.
    \item Análisis masivo de proyectos.
@@ -226,9 +225,51 @@ label{sec:planificacion-temporal}
 \cleardoublepage
 \chapter{Estado del arte}
 
-También existe la posibilidad de poner notas al pie de página, por ejemplo, 
-una para indicarte que visite la página de 
-LibreSoft\footnote{\url{http://www.libresoft.es}}.
+Actualmente existen varias herramientas que analizan el pensamiento computacional de nuestro código:
+\begin{itemize}
+	\item Pylint\footnote{\url{http://www.pylint.org}}: consiste en un analizado estático de código Python que se puede instalar en la línea de comandos y ofrece información sobre cómo de bien está escrito nuestro código  según la guía de estilos PEP-8 y muestra una serie de mensajes clasificados bajo las siguientes categorías:
+	 \begin{itemize}
+	 	\item Refactorización: Asociado a una violación en alguna buena práctica.
+		\item Convención: Asociada a una violación al estándar de codificación.
+		\item Advertencia: Asociadas a problemas de estilo o errores de programación menores.
+		\item Error: Asociados a errores de programación importantes, es probable que se trate de un bug.
+		\item Fatal: Asociados a errores que no permiten a Pylint avanzar en su análisis.
+	 \newpage		
+		\begin{figure}
+  		\centering
+ 		 \includegraphics[width=5cm, keepaspectratio]{img/pylint1.jpg}
+ 		 \caption{Mensajes de salida de Pylint}
+ 		 \label{fig:Mensajes Pylint}
+		\end{figure}
+	 \end{itemize}
+	
+	 Finalmente, Pylint nos da una puntuación general de 0 a 10, alentando al programador a subir de puntuación y con ello, mejorar su código:
+	
+	 \begin{figure}
+  		\centering
+ 		 \includegraphics[width=9cm, keepaspectratio]{img/pylint2.jpg}
+ 		 \caption{Puntuación general Pylint}
+ 		 \label{fig:Puntuación general Pylint}
+	\end{figure}
+	\item Scrape\footnote{\url{http://happyanalyzing.com/}}: consiste en un analizador de código Scratch en el cual se muestran los bloques de Scratch usados en el proyecto. Cuenta cuántas veces ha usado un determinado bloque, si ha usado listas, variables y cuántos objetos tiene, entre otros:
+	 \begin{figure}
+  		\centering
+ 		 \includegraphics[width=7cm, keepaspectratio]{img/scrape.jpg}
+ 		 \caption{Vista general de Scrape}
+ 		 \label{fig:Vista general de Scrape}
+	\end{figure}
+	 
+	 
+	 \newpage
+	 \item Hairball\footnote{\url{https://github.com/ucsb-cs-education/hairball}}: consiste en un plugin de Python que analiza estáticamente proyectos de Scratch, ofreciendo a su salida la siguiente información:
+	 	\begin{itemize}
+			\item Habilidades generales del pensamiento computacional (abstracción, paralelismo, lógica, sincronización, control de flujo, interactividad con el usuario y representación de los datos).
+			\item Malos hábitos de programación: programas duplicados, código muerto, nombrado de objetos e inicialización de atributos.  (FIXME: indicar cuáles ha desarrollado Jesús)
+		\end{itemize}
+		
+	 
+
+\end{itemize}
 
 \section{Python} 
 Es un lenguaje de programación interpretado, con una sintaxis sencilla y legible. Soporta orientación a objetos, programación imperativa y, en menor medida, programación funcional. 
