@@ -81,7 +81,8 @@ MEJORA DE LA PLATAFORMA DR. SCRATCH
 
 \large
 Autor : Eva Hu Garres \\
-Tutor : Dr. Gregorio Robles
+Tutor : Dr. Gregorio Robles \\
+Co-Tutor: Jesús Moreno León
 \end{center}
 \end{titlepage}
 
@@ -182,6 +183,8 @@ just before submitting.
 
 En la última década, el número de dispositivos electrónicos(móviles, tabletas, ordenadores...) ha aumentado exponencialmente, aumentando así el número de usuarios que los consumen. Es por ello que hoy en día y cada vez más, se va concienciando a los alumnos en las escuelas la importancia de la programación para un futuro a corto y largo plazo aunque uno no se vaya a dedicar específicamente a ello en un futuro. Aprender a programar es una manera ideal de estructurar los procesos mentales, ayudando a asentar conocimientos que ya se tenían y a aprender conceptos nuevos.
 
+Actualmente, existe un movimiento mundial que está llevando la programación a las aulas desde primaria (Reino Unido, Estonia, EEUU...) haciendo que docentes de todo el mundo tengan que aprender a programar (si no saben todavía), enseñar a sus alumnos y evaluar los programas de sus alumnos. Es por ello que necesitan herramientas que les apoyen en todo el proceso. Así surge Dr. Scratch, como herramienta de apoyo a docentes y aprendices.
+
 Un año hace desde que nació Dr. Scratch. Fue fruto de la inspiración de mi tutor de proyecto, Gregorio Robles, y mi co-tutor, Jesús Moreno, cuando buscaban un campo de investigación en el que basar su doctorado y pensaron que, ¿por qué no enseñar programación a los niños de forma divertida? 
 
 Desde entonces, la plataforma ha cambiado mucho según se han ido haciendo encuestas y talleres. Gracias a la comunidad de usuarios que usan y/o han usado Dr. Scratch hemos podido seguir mejorando y creciendo en cada actualización. 
@@ -225,7 +228,7 @@ label{sec:planificacion-temporal}
 \cleardoublepage
 \chapter{Estado del arte}
 
-Actualmente existen varias herramientas que analizan el pensamiento computacional de nuestro código:
+Actualmente existen varias herramientas que analizan estáticamente el código fuente de programas escritos en distintos lenguajes para ofrecer retroalimentación al usuario:
 \begin{itemize}
 	\item Pylint\footnote{\url{http://www.pylint.org}}: consiste en un analizado estático de código Python que se puede instalar en la línea de comandos y ofrece información sobre cómo de bien está escrito nuestro código  según la guía de estilos PEP-8 y muestra una serie de mensajes clasificados bajo las siguientes categorías:
 	 \begin{itemize}
@@ -264,35 +267,41 @@ Actualmente existen varias herramientas que analizan el pensamiento computaciona
 	 \item Hairball\footnote{\url{https://github.com/ucsb-cs-education/hairball}}: consiste en un plugin de Python que analiza estáticamente proyectos de Scratch, ofreciendo a su salida la siguiente información:
 	 	\begin{itemize}
 			\item Habilidades generales del pensamiento computacional (abstracción, paralelismo, lógica, sincronización, control de flujo, interactividad con el usuario y representación de los datos).
-			\item Malos hábitos de programación: programas duplicados, código muerto, nombrado de objetos e inicialización de atributos.  (FIXME: indicar cuáles ha desarrollado Jesús)
+			\item Malos hábitos de programación: programas duplicados, código muerto, nombrado de objetos e inicialización de atributos.
+			\item De todas las habilidades y hábitos mostrados anteriormente, los plugins Mastery (nos da una puntuación global sobre 21), código repetido y nombrado de objetos han sido desarrollados por Jesús Moreno\footnote{\url{https://github.com/jemole/hairball}}
 		\end{itemize}
-		
-	 
-
 \end{itemize}
 
 \section{Python} 
 Es un lenguaje de programación interpretado, con una sintaxis sencilla y legible. Soporta orientación a objetos, programación imperativa y, en menor medida, programación funcional. 
 Fue creado por Guido van Rossum a finales de los ochenta y el nombre del lenguaje se debe a los humoristas británicos "Monty Python".
+(FIXME: No sé si decir algo más.)
 
 \section{Django} 
-\label{sec:seccion1}
+Es un framework web que permite construir aplicaciones web con Python como lenguaje de back-end más rápido y con menos código. Su patrón de arquitectura de software es MVC, Modelo-Vista-Controlador\footnote{\url{http://www.djangobook.com/}}:
+	\begin{itemize}
+			\item Modelo: contiene el núcleo de la aplicación.
+			\item Vista: presenta la información obtenida del Modelo.
+			\item Controlador: reacciona a interacciones del usuario.
+	\end{itemize}
+	 \begin{figure}
+  		\centering
+ 		 \includegraphics[width=7cm, keepaspectratio]{img/django.jpg}
+ 		 \caption{MVC de Django}
+ 		 \label{fig:MVC de Django}
+	\end{figure}
 
 \section{Bootstrap} 
-\label{sec:seccion1}
+Es un conjunto de herramientas de software libre para el diseño de sitios y aplicaciones web. Permite crear de forma muy sencilla elementos comunes de todo sitio web: botones, formularios, barras de navegación, etc.\footnote{\url{http://getbootstrap.com}}
 
 \section{MySQL} 
-\label{sec:seccion1}
-
+Es un sistema de gestión de bases de datos relacional desarrollado por Oracle. Funciona bien en sitios de mucho tráfico y permite múltiples consultas al mismo tiempo.
+(FIXME: No sé qué más decir.)
 \section{Hairball} 
-\label{sec:seccion1}
+(FIXME: Como lo he mencionado arriba no sé si volver a explicarlo.)
 
 \section{Scratch} 
-\label{sec:seccion1}
-
-
-
-
+Es un pseudo-lenguaje de programación basado en bloques, orientado a la enseñanza principalmente mediante la creación de videojuegos. La forma de programar en Scratch permite al usuario aprender rápidamente sin tener que aprender la sintaxis del lenguaje, centrándose en la lógica del programa. Scratch es, además, una gran comunidad de usuarios de los que aprender y con los que compartir los proyectos que se van creando.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DISEÑO E IMPLEMENTACIÓN %
