@@ -255,7 +255,7 @@ Actualmente existen varias herramientas que analizan estáticamente el código fue
  		 \label{fig:Puntuación general Pylint}
 	\end{figure}
 	\item Scrape\footnote{\url{http://happyanalyzing.com/}}: consiste en un analizador de código Scratch en el cual se muestran los bloques de Scratch usados en el proyecto. Cuenta cuántas veces ha usado un determinado bloque, si ha usado listas, variables y cuántos objetos tiene, entre otros:
-	 \begin{figure}
+	 \begin{figure}[H]
   		\centering
  		 \includegraphics[width=7cm, keepaspectratio]{img/scrape.jpg}
  		 \caption{Vista general de Scrape}
@@ -284,7 +284,7 @@ Es un framework web que permite construir aplicaciones web con Python como lengu
 			\item Vista: presenta la información obtenida del Modelo.
 			\item Controlador: reacciona a interacciones del usuario.
 	\end{itemize}
-	 \begin{figure}
+	 \begin{figure}[H]
   		\centering
  		 \includegraphics[width=7cm, keepaspectratio]{img/django.jpg}
  		 \caption{MVC de Django}
@@ -310,23 +310,59 @@ Es un pseudo-lenguaje de programación basado en bloques, orientado a la enseñanz
 \cleardoublepage
 \chapter{Diseño e implementación}
 
-\section{Arquitectura general} 
-\label{sec:arquitectura}
+\section{Arquitectura general}
+A continuación se muestra la arquitectura general de Dr. Scratch:
+	 \begin{figure}[H]
+  		\centering
+ 		 \includegraphics[width=9cm, keepaspectratio]{img/arquitectura.jpg}
+ 		 \caption{Arquitectura general}
+ 		 \label{fig:Arquitectura general Dr. Scratch}
+	\end{figure}
+Cuando el servidor de Dr. Scratch recibe una petición HTTP, por ejemplo, drscratch.org/alguna-url. Dicha petición es manejada por el archivo urls.py, que contiene todas las urls drscratch/algo. El archivo urls.py va mirando cada una de la urls que tiene en su lista y si la encuentra la enlaza con la función de views.py asociada. Si no encuentra la url, optará por coger la última. Una vez encontrada la url y la función de views.py asociada, ejecuta dicha función, al final de la cual devolverá un HttpResponse y con ello una plantilla HTML.
 
-figura~\ref{fig:arquitectura}.
+\section{Diseño e implementación del back-end}
+	\subsection Nuevos dashboards
+	A lo largo de todo un año de trabajo, hemos realizado varios talleres tanto con alumnos como con docentes. Gracias a sus sugerencias hemos ido mejorando las pantallas mostradas al analizar proyectos.
+	A continuación se muestra una primera versión:
+	 \begin{figure}[H]
+  		\centering
+ 		 \includegraphics[width=10cm, keepaspectratio]{img/dashboard1.jpg}
+ 		 \caption{Primera versión del dashboard.}
+ 		 \label{fig:Primera versión del dashboard.}
+	\end{figure}
+	
+	Esta primera versión del dashboard se muestra para todos los niveles la misma información.
+	
+	Después, se mostraban distintos dashboards y distinta información en función del nivel. Si el nivel era bajo se mostraba menos información y si el nivel era alto se mostraba más información:
+	
+	(FIXME: Pedir los dashboards de Mari Luz).
+	
+	Finalmente nos dimos cuenta de que los más pequeños no sabían usar el scroll del ratón y por lo tanto, diseñamos unas nuevas pantallas que mostraran toda la información en una pantalla, sin necesidad de bajar con el ratón.
+	
+	
+	\begin{itemize}
+			\item Nuevos dashboards(histórico) 
+			\item Estadísticas(muy tocho) Tarea programada
+			\item Organizaciones(muy tocho)
+				\begin{itemize}
+					\item Registro de usuarios
+					\item Restauración de contraseña
+					\item Análisis masivo: csv(traducción de diccionarios)
+					\item Modificación del procesador de Dead Code
+				\end{itemize}
+			\item Modificación del procesador de Dead Code
+			\item Foro
+	\end{itemize}
 
-\begin{figure}
-  \centering
-  \includegraphics[width=9cm, keepaspectratio]{img/arquitectura}
-  \caption{Estructura del parser básico}
-  \label{fig:arquitectura}
-\end{figure}
-
-\section{Diseño del back-end}
-\label{sec:arquitectura}
-
-\section{Diseño del front-end}
-\label{sec:arquitectura}
+\section{Diseño e implementación del front-end}
+	\begin{itemize}
+			\item Nuevos dashboards(muy tocho)Bootstrap tour, plyploma, popups, twitter
+			\item Páginas de ayuda
+			\item Estadísticas(muy tocho)
+			\item Organizaciones(muy tocho)
+			\item Validación de formularios vía AJAX
+			\item Foro
+	\end{itemize}
 
 \section{Base de datos}
 \label{sec:arquitectura}
