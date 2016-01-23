@@ -351,18 +351,35 @@ Cuando el servidor de Dr. Scratch recibe una petición HTTP, por ejemplo, drscrat
 	\end{itemize}
 	
 	Dicha página se actualiza cada noche mediante la creación de un nuevo comando en Django, ejecutando python manage.py mystats en la linea de comandos como una tarea programada. Esto se ha realizado mediante la creación de las carpetas y archivos siguientes:
-	app/
-		\textbackslash{}|\_ management\/
-			\|\_ __init__.py
-			\|\_ commands\/
-				\|\_ __init__.py
-				\|\_ mystats.py
+	(FIXME: corregir esto -> Duda Gregorio)
+	app/ \newline
+		|  management\/ \newline
+			 \_ __init__.py \newline
+			 \_ commands\/ \newline
+				|\_ __init__.py \newline
+				| \_ mystats.py
 	
 	Es en "mystats.py" donde realizaremos todos los promedios y los guardaremos en la base de datos. Haciendo así las estadísticas, evitamos tener que realizar todos los promedios en tiempo real cada vez que se visita la página, quitando carga al servidor.
 	A su vez, se ha creado una función en el archivo views.py llamada, "statistics", que consultará los datos en la base de datos y formará un diccionario para devolverlo en un objeto HTTP.
 	La función "mystats.py" está estructurada de la siguiente manera:
-		
+		\begin{figure}[H]
+  		\centering
+ 		 \includegraphics[width=12cm, keepaspectratio]{img/esquemaStatistics.jpg}
+ 		 \caption{Esquema de la funcion Statistics.}
+ 		 \label{fig:Esquema de la funcion Statistics.}
+	\end{figure}
 				
+	En el esquema de arriba podemos ver cómo se generan las estadísticas. En primer lugar, inicializamos las variables, diccionarios y listas y creamos una lista de fechas, desde una que indiquemos hasta el día de hoy. Después vamos recorriendo esa lista de fechas, consultando en la BBDD y recogiendo los siguientes datos:
+		\begin{itemize}
+			\item Media de puntuación diaria.
+			\item Número de proyectos analizados cada día.
+			\item Todas las puntuaciones.
+		\end{itemize}
+		
+	Una vez hecho esto, contamos el número total de proyectos y el número de proyectos que se encuentra en cada nivel (bajo, medio, alto) para poder generar una gráfica en forma de "quesito". 
+	Finalmente calculamos la puntuación media por habilidad del pensamiento computacional y por malas prácticas, y guardamos en la BBDD.
+	
+	Haciéndolo de esta manera, la función alojada en views.py mencionada anteriormente, sólo tiene que consultar la BBDD para obtener las estadísticas y devolverlas en un diccionario en la respuesta HTTP.
 	
 	
 	\subsection{Organizaciones} 
@@ -499,6 +516,44 @@ En las imágenes de arriba vemos los dashboards asociados a cada nivel: básico, m
 	\end{itemize}
 
 \subsection{Páginas de ayuda}
+
+En los talleres realizados para profesores y alumnos, nos sugirieron tener algún tipo de ayuda para poder subir de puntuación. Por ello, creamos una serie de páginas de consulta en las que se podría aprender en qué consiste cada habilidad y malas prácticas y cómo mejorar. 
+Los enlaces a estas páginas se muestran al analizar un proyecto:
+			\begin{figure}[H]
+  				\centering
+ 		 			\includegraphics[width=5cm, keepaspectratio]{img/pag_ayuda.jpg}
+ 		 			\caption{Acceso a páginas de ayuda.}
+ 		 			\label{fig:Acceso a páginas de ayuda.}
+			\end{figure}
+En el ejemplo, si quisiéramos mejorar la habilidad "Control de flujo" pincharíamos sobre el y veríamos lo siguiente:
+			\begin{figure}[H]
+  				\centering
+ 		 			\includegraphics[width=7cm, keepaspectratio]{img/pag_ayuda1.jpg}
+					\includegraphics[width=7cm, keepaspectratio]{img/pag_ayuda2.jpg}
+ 		 			\caption{Acceso a páginas de ayuda.}
+ 		 			\label{fig:Acceso a páginas de ayuda.}
+			\end{figure}
+Se muestran tres apartados para subir de 0 a 1, de 1 a 2 y de 2 a 3. En cada apartado veremos ejemplos visuales de lo que el usuario podría hacer para subir de puntuación en esa habilidad, y algunas explicaciones sobre los bloque que se utilizan en el ejemplo. 
+Para mostrar los bloques hemos utilizado una librería llamada Scratch blocks\footnote{\url{https://github.com/tjvr/scratchblocks}} que nos permite generar bloques de Scratch desde la plantilla HTML.
+Scratch blocks tiene una sintaxis muy parecida a la de sus bloques y está disponible para numerosos idiomas. Por ejemplo si quisiéramos mostrar el bloque "al presionar bandera verde" sólo tendríamos que escribir:
+
+\begingroup
+		\fontsize{7pt}{8pt}\selectfont
+			\begin{verbatim}
+<pre class="blocks">al presionar bandera verde
+</pre>    			
+			\end{verbatim}
+	\endgroup
+Sin embargo, como Dr. Scratch está disponible también en más idiomas, escribimos los bloques en inglés y posteriormente se traducen:
+
+\begingroup
+		\fontsize{7pt}{8pt}\selectfont
+			\begin{verbatim}
+<pre class="blocks">{% trans "when gf clicked" %}
+</pre>    			
+			\end{verbatim}
+	\endgroup
+
 \subsection{Estadísticas}
 Para mostrar las estadísticas generadas en forma de gráficas, optamos por usar Highcharts\footnote{\url{http://www.highcharts.com}} dado que dispone de muchos tipos de gráficas y se adapta
 bien a lenguaje de plantillas de Django. Las estadísticas que se muestran son:
@@ -565,42 +620,39 @@ encontrado y qué medidas se han tomado para mitigar esos problemas.
 \section{Aplicación de lo aprendido}
 \label{sec:aplicacion}
 
-Aquí viene lo que has aprendido durante el Grado/Máster y que has aplicado
-en el TFG/TFM. Una buena idea es poner las asignaturas más relacionadas y
-comentar en un párrafo los conocimientos y habilidades puestos en práctica.
-
+En el proyecto he aplicado los conocimientos aprendidos de las siguientes asignaturas:
 \begin{enumerate}
-  \item a
-  \item b
+  \item Protocolos para la transmisión de audio y video en internet: en esta asignatura aprendí a programar en Python, entre otras cosas.
+  \item Laboratorio de tecnologías audiovisuales en la web: en esta asignatura aprendí a crear mi primer proyecto en Django.
 \end{enumerate}
 
 
 \section{Lecciones aprendidas}
 \label{sec:lecciones_aprendidas}
 
-Aquí viene lo que has aprendido en el Trabajo Fin de Grado/Máster.
+En este proyecto he aprendido numerosas cosas:
 
 \begin{enumerate}
-  \item a
-  \item b
-\end{enumerate}
+  \item Gestión y trabajo en equipo. La coordinación y la ayuda entre compañeros ha sido la clave para que el proyecto se desarrollara con éxito. Dicha coordinación se ha llevado a cabo principalmente por la herramienta Trello y gracias a videoconferencias semanales.
+  \item Realizar eventos y workshops. Gracias a la realización de numerosos talleres, he aprendido a hablar en público y he perdido el miedo (y la vergüenza) que ello supone. También he podido ver cómo aprende un niño a programar. Este punto ha sido el más emocionante para mí.
+   \item Administración del servidor. Aquí he aprendido que hay varios entornos de desarrollo en un proyecto de software. Dr. Scratch cuenta con dos: preproducción (entornos de pruebas) y producción (entorno real). Este punto es muy importante ya que las pruebas han ocupado casi el 80\% del tiempo. He aprendido a poner en marcha un servidor Apache con Django y a realizar actualizaciones en él.
+   \item (FIXME: algo mas?)
+  \end{enumerate}
 
 
 \section{Trabajos futuros}
 \label{sec:trabajos_futuros}
 
-Ningún software se termina, así que aquí vienen ideas y funcionalidades
-que estaría bien tener implementadas en el futuro.
-
-Es un apartado que sirve para dar ideas de cara a futuros TFGs/TFMs.
+\begin{enumerate}
+  \item Crear cuentas de profesores para que puedan agrupar a sus alumnos. 
+   \item Crear una red social dentro de Dr. Scratch, de tal manera que puedan comentar las puntuaciones que han sacado y lanzarse retos.
+    \item 
+\end{enumerate}
 
 
 \section{Valoración personal}
 \label{sec:valoracion}
 
-Finalmente (y de manera opcional), hay gente que se anima a dar su punto de
-vista sobre el proyecto, lo que ha aprendido, lo que le gustaría haber aprendido,
-las tecnologías utilizadas y demás.
 
 
 
