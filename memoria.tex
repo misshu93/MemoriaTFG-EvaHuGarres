@@ -70,7 +70,7 @@ Curso Académico 2015/2016
 
 \vspace{0.8cm}
 
-Trabajo Fin de Carrera/Grado/Máster
+Trabajo Fin de Grado
 
 \vspace{2.5cm}
 
@@ -181,7 +181,7 @@ just before submitting.
 %Aquí quiero decir lo importante que es aprende a programar hoy en día aunque en un futuro no se dedique uno a ello, ya que es útil para aprender y mejorar en otras áreas del %conocimiento.
 %
 
-En la última década, el número de dispositivos electrónicos(móviles, tabletas, ordenadores...) ha aumentado exponencialmente, aumentando así el número de usuarios que los consumen. Es por ello que hoy en día y cada vez más, se va concienciando a los alumnos en las escuelas la importancia de la programación para un futuro a corto y largo plazo aunque uno no se vaya a dedicar específicamente a ello en un futuro. Aprender a programar es una manera ideal de estructurar los procesos mentales, ayudando a asentar conocimientos que ya se tenían y a aprender conceptos nuevos.
+En la última década, el número de dispositivos electrónicos (móviles, tabletas, ordenadores...) ha aumentado exponencialmente, aumentando así el número de usuarios que los consumen. Es por ello que hoy en día y cada vez más, se va concienciando a los alumnos en las escuelas la importancia de la programación para un futuro a corto y largo plazo aunque uno no se vaya a dedicar específicamente a ello en un futuro. Aprender a programar es una manera ideal de estructurar los procesos mentales, ayudando a asentar conocimientos que ya se tenían y a aprender conceptos nuevos.
 
 Actualmente, existe un movimiento mundial que está llevando la programación a las aulas desde primaria (Reino Unido, Estonia, EEUU...) haciendo que docentes de todo el mundo tengan que aprender a programar (si no saben todavía), enseñar a sus alumnos y evaluar los programas de sus alumnos. Es por ello que necesitan herramientas que les apoyen en todo el proceso. Así surge Dr. Scratch, como herramienta de apoyo a docentes y aprendices.
 
@@ -211,7 +211,7 @@ El objetivo de este proyecto es aportar realimentación sobre el nivel de pensami
   \item Migrar el servidor a la nube para un ofrecer un mejor rendimiento.
   \item Registro de usuarios. Crear cuentas de organizaciones, profesores y alumnos, donde se pueda llevar un seguimiento de los proyectos analizados.
    \item Análisis masivo de proyectos.
-   \item Página de estadísticas generales y foro.
+   \item Crear una página de estadísticas generales y otra página de foro.
  \end{itemize}
 
 
@@ -254,7 +254,7 @@ Actualmente existen varias herramientas que analizan estáticamente el código fue
  		 \caption{Puntuacion general Pylint}
  		 \label{fig:Puntuacion general Pylint}
 	\end{figure}
-	\item Scrape\footnote{\url{http://happyanalyzing.com/}}: consiste en un analizador de código Scratch en el cual se muestran los bloques de Scratch usados en el proyecto. Cuenta cuántas veces ha usado un determinado bloque, si ha usado listas, variables y cuántos objetos tiene, entre otros:
+	\item Scrape\footnote{\url{http://happyanalyzing.com/}}: consiste en un analizador de código Scratch en el cual se muestran los bloques de Scratch usados en el proyecto. Cuenta cuantas veces ha usado un determinado bloque, si ha usado listas, variables y cuántos objetos tiene, entre otros:
 	 \begin{figure}[H]
   		\centering
  		 \includegraphics[width=7cm, keepaspectratio]{img/scrape.jpg}
@@ -314,7 +314,7 @@ Es un pseudo-lenguaje de programación basado en bloques, orientado a la enseñanz
 A continuación se muestra la arquitectura general de Dr. Scratch:
 	 \begin{figure}[H]
   		\centering
- 		 \includegraphics[width=9cm, keepaspectratio]{img/arquitectura.jpg}
+ 		 \includegraphics[width=11cm, keepaspectratio]{img/arquitectura.jpg}
  		 \caption{Arquitectura general}
  		 \label{fig:Arquitectura general Dr. Scratch}
 	\end{figure}
@@ -341,6 +341,29 @@ Cuando el servidor de Dr. Scratch recibe una petición HTTP, por ejemplo, drscrat
 	Finalmente nos dimos cuenta de que los más pequeños no sabían usar el scroll del ratón y por lo tanto, diseñamos unas nuevas pantallas que mostraran toda la información en una pantalla, sin necesidad de bajar con el ratón. 
 			
 	\subsection{Estadísticas} 
+	Se ha creado una página de estadísticas donde se podrá consultar:
+	\begin{itemize}
+		\item Puntuación media diaria.
+		\item Porcentaje de niveles.
+		\item Número de proyectos analizados cada día.
+		\item Puntuación media por habilidad.
+		\item Puntuación media por mal hábito.
+	\end{itemize}
+	
+	Dicha página se actualiza cada noche mediante la creación de un nuevo comando en Django, ejecutando python manage.py mystats en la linea de comandos como una tarea programada. Esto se ha realizado mediante la creación de las carpetas y archivos siguientes:
+	app/
+		\textbackslash{}|\_ management\/
+			\|\_ __init__.py
+			\|\_ commands\/
+				\|\_ __init__.py
+				\|\_ mystats.py
+	
+	Es en "mystats.py" donde realizaremos todos los promedios y los guardaremos en la base de datos. Haciendo así las estadísticas, evitamos tener que realizar todos los promedios en tiempo real cada vez que se visita la página, quitando carga al servidor.
+	A su vez, se ha creado una función en el archivo views.py llamada, "statistics", que consultará los datos en la base de datos y formará un diccionario para devolverlo en un objeto HTTP.
+	La función "mystats.py" está estructurada de la siguiente manera:
+		
+				
+	
 	
 	\subsection{Organizaciones} 
 	
@@ -348,99 +371,161 @@ Cuando el servidor de Dr. Scratch recibe una petición HTTP, por ejemplo, drscrat
 					\item Registro de usuarios
 					\item Restauración de contraseña
 					\item Análisis masivo: csv(traducción de diccionarios)
-					\item Modificación del procesador de Dead Code
 				\end{itemize}
 	
 	\subsection{Modificación del procesador de Dead Code} 
-	Debido a que se ha modificado el plugin de Dead Code de Hairball, la salía que ofrecía dicho plugin ya no 
-		\begingroup
-			\fontsize{7pt}{8pt}\selectfont
-				\begin{verbatim}
-	def procDeadCode(lines, fileName):
-    """ Return the number of dead code and their blocks"""
-    		lines = lines.split("\n")[1:]
-    		lines2dic = ast.literal_eval(str(lines))
-    		lines2dic = ast.literal_eval(lines2dic[0])
-
-    		keys = lines2dic.keys()
-    		total = 0
-    		blocks = ""
-    		for n in keys: 
-        			total += len(lines2dic[n])
-        			blocks += n + "\n" +str(lines2dic[n])
-     
-    		dic = {"deadCode":{"blocks":blocks,"number":total}}
-    		#Save in DB
-    		fileName.deadCode = total
-    		fileName.save()
-    		return dic
-    
-    \end{verbatim}
-	\endgroup
-
+	Debido a que se ha modificado el plugin de Dead Code de Hairball, la salida que ofrecía dicho plugin ya no es la misma que la de antes. Por ello se ha tenido que modificar el procesador de dicho plugin para poder mostrarlo correctamente en el dashboard. 
+	Antes la salida que daba el plugin era:
 	
-	\subsection{Foro} 
-	
-	Dr. Scratch tiene una cuenta Twitter y en Wordpress, donde se interactúa con los diferentes usuarios y se escriben entradas sobre los talleres que realizamos o las actualizaciones de la web. Sin embargo, queríamos incluir una parte de foro donde la gente que use Dr. Scratch pueda opinar sobre él. Para ello, se creó la siguiente función en el fichero views.py:
-
 	\begingroup
 		\fontsize{7pt}{8pt}\selectfont
 			\begin{verbatim}
-
-				def discuss(request):
-    					comments = dict()
-    					form = DiscussForm()
-   					if request.user.is_authenticated():
-        						user = request.user.username
-    					if request.method == "POST":
-
-        						form = DiscussForm(request.POST)
-        						if form.is_valid():
-            						nick = user
-            						date = timezone.now()
-            						comment = form.cleaned_data["comment"]
-            						new_comment = Discuss(nick = nick,
-                                									date = date,
-                                									comment=comment)
-            						new_comment.save()
-        						else:
-            						comments["form"] = form
-
-    					data = Discuss.objects.all().order_by("-date")
-    					lower = 0
-    					upper = 10
-    					list_comments = {}
-   
-   					if len(data) > 10:
-        						for n in range((len(data)/10)+1):
-            						list_comments[str(n)]= data[lower:upper-1]
-            							lower = upper
-            							upper = upper + 10
-    					else:
-        						list_comments[0] = data
-
-
-    					comments["comments"] = list_comments
-
-    					return render_to_response("discuss/discuss.html",
-                             							comments,
-                             							context_instance=RC(request))
-			\end{verbatim}
+$ hairball -p blocks.DeadCode Testing.sb2 
+Testing.sb2
+{u'Witch': [kurt.Script([
+    kurt.Block('forward:', 10),
+    kurt.Block('turnRight:', 15)], pos=(32, 287))]}  
+    			\end{verbatim}
 	\endgroup
+	Y actualmente es:
+	\begingroup
+		\fontsize{7pt}{8pt}\selectfont
+			\begin{verbatim}
+				
+$ hairball -p blocks.DeadCode Testing.sb2 
+Testing.sb2
+{u'Witch': [['move %s steps', 'turn @turnRight %s degrees']]}
+
+    			\end{verbatim}
+	\endgroup
+
+	Se modificado el procesador de Dead Code de tal manera que se convierte a diccionario todo lo que hay a partir de la tercera línea mediante la función "ast.literal_eval" .
+
+	 Después, se recopilan todas las claves del diccionario, que serán todos los objetos donde hay código muerto y conforme se va recorriendo el objeto y contando los bloques que no se ejecutan, se va formando un string con el formato: " objeto: número de bloques que no se ejecutan " . Finalmente se guarda en la base de datos y se forma un diccionario con dos claves: "blocks" y "total" para entregarlo en una respuesta HTTP al analizar un proyecto.
+	Por ejemplo:
+	 \begin{figure}[H]
+  		\centering
+		\includegraphics[width=10cm, keepaspectratio]{img/ejemploDeadCode.jpg}
+ 		 \includegraphics[width=10cm, keepaspectratio]{img/esquemaDeadCode.jpg}
+ 		 \caption{Esquema DeadCode.}
+ 		 \label{fig:Esquema DeadCode.}
+	\end{figure}
+	En la figura de arriba vemos un ejemplo de lo que devolvería el plugin de Hairball "Dead Code". El procesador que se ha desarrollado calcularía la longitud de la sub-lista asociada a Witch, en este caso, dos programas que no se ejecutan y el objeto "Ghost"  tendría otros dos. 
 	
+	\subsection{Foro} 
+	
+	Dr. Scratch tiene una cuenta Twitter y en Wordpress, donde se interactúa con los diferentes usuarios y se escriben entradas sobre los talleres que realizamos o las actualizaciones de la web. Sin embargo, queríamos incluir una parte de foro donde la gente que use Dr. Scratch pueda opinar sobre él. Para ello, se creó la función "discuss" en el fichero views.py.
+	Dicha función tiene dos partes: si la petición es un GET, en el caso de mostrar mensajes, o es un POST, en el caso de comentar.
+	Para poder comentar en el foro deberemos estar registrados. De esta manera evitamos tener que poner algún tipo de CAPTCHA(FIXME: existe algún ataque relacionado por recibir muchos comentarios con SPAM?Indicarlo aquí.)
+	
+	\begin{figure}[H]
+  		\centering
+ 		 \includegraphics[width=10cm, keepaspectratio]{img/esquemaForo.jpg}
+ 		 \caption{Esquema Foro.}
+ 		 \label{fig:Esquema Foro.}
+	\end{figure}
+		
 	En esta función primero comprobamos si el formulario está bien completado, se guardará el comentario en la base de datos. Cabe destacar que el usuario sólo podrá comentar si está registrado.
 	Después se recopilan todos los comentarios y se ordenan de forma que el primero sea el más nuevo (por fecha) y el último sea el más antiguo. Finalmente se crea un diccionario de "hojas" donde la hoja 0 será la que tenga los comentarios más recientes y así sucesivamente, y se devuelve un objeto HTTP con la plantilla html y el diccionario.
 
 
 \section{Diseño e implementación del front-end}
+
+	\subsection{Nuevos dashboards}
+	
+Como se ha comentado en el apartado anterior, diseño e implementación del back-end, hemos diseñado nuevas plantillas para mostrar el resultado de los análisis. Inicialmente se mostraba lo siguiente:
+	 \begin{figure}[H]
+  		\centering
+ 		 \includegraphics[width=10cm, keepaspectratio]{img/dashboard1.jpg}
+ 		 \caption{Primera version del dashboard.}
+ 		 \label{fig:Primera version del dashboard.}
+	\end{figure}
+	
+En esa pantalla se mostraba la puntuación total sobre 21 de pensamiento computacional, puntuación parcial de cada habilidad de programación y si hay malas prácticas. 
+Después decidimos mostrar diferentes pantallas en función del nivel (si es bajo, medio o alto), por lo que diseñamos las siguientes pantallas
+
+(FIXME: incluir las versiones anteriores.)
+
+Finalmente, rediseñamos los dashboards de tal manera que se simplificara lo máximo posible las pantallas con el fin de ver, de un vistazo, la información más importante. 
+
+ \begin{figure}[H]
+  		\centering
+ 		 \includegraphics[width=5cm, keepaspectratio]{img/basico.jpg}
+		 \includegraphics[width=5cm, keepaspectratio]{img/medio.jpg}
+		 \includegraphics[width=5cm, keepaspectratio]{img/alto.jpg}
+ 		 \caption{Ultima version del dashboard.}
+ 		 \label{fig:Ultima version del dashboard.}
+	\end{figure}
+En las imágenes de arriba vemos los dashboards asociados a cada nivel: básico, medio y alto (de izquierda a derecha). Para el nivel básico se muestra sólo la puntuación de las habilidades de programación, para el nivel medio, mostramos además de eso, dos malas prácticas que corregir y al nivel alto le mostramos todo. A esa versión final se le ha añadido:
 	\begin{itemize}
-			\item Nuevos dashboards(muy tocho)Bootstrap tour, plyploma, popups, twitter
-			\item Páginas de ayuda
-			\item Estadísticas(muy tocho)
-			\item Organizaciones(muy tocho)
-			\item Validación de formularios vía AJAX
-			\item Foro
+			\item Enlaces a páginas de ayuda, donde los usuarios pueden encontrar pequeñas guías para subir de nivel. 
+			\item Una pequeña ayuda descriptiva en la que se explica cada sección del dashboard. Esta parte ha sido hecha con BootstrapTour \footnote{\url{http://bootstraptour.com}}.
+			 \begin{figure}[H]
+  				\centering
+ 		 			\includegraphics[width=10cm, keepaspectratio]{img/tour.jpg}
+ 		 			\caption{BootstrapTour.}
+ 		 			\label{fig:BootstrapTour.}
+			\end{figure}
+			\item Posibilidad de publicar en Twitter tu puntuación \footnote{\url{https://about.twitter.com/es/resources/buttons}}
+			 \begin{figure}[H]
+  				\centering
+ 		 			\includegraphics[width=10cm, keepaspectratio]{img/tweet.jpg}
+ 		 			\caption{Twitter.}
+ 		 			\label{fig:Twitter.}
+			\end{figure}
+			\item Diplomas. Cada vez que el usuario analiza un proyecto, tiene la posibilidad de descargarse un diploma con la puntuación obtenida:
+			\begin{figure}[H]
+  				\centering
+ 		 			\includegraphics[width=10cm, keepaspectratio]{img/diploma.jpg}
+ 		 			\caption{Diploma.}
+ 		 			\label{fig:Diploma.}
+			\end{figure}
+			Dicho diploma se forma gracias al script Pyploma (modificado) y mediante LaTeX.
+			\item Si el usuario ha analizado el proyecto vía URL, puede volver a él fácilmente:
+			\begin{figure}[H]
+  				\centering
+ 		 			\includegraphics[width=5cm, keepaspectratio]{img/vuelve_a_tu_proyecto.jpg}
+ 		 			\caption{Link para volver a Scratch.}
+ 		 			\label{fig:Link para volver a Scratch.}
+			\end{figure}
+			\item Popups que informan de las malas prácticas.
+			\item Gamificación: en todas aquellas habilidades de programación donde ha obtenido 3/3, la barra de progreso se torna verde y se le añade una estrella.
+			\begin{figure}[H]
+  				\centering
+ 		 			\includegraphics[width=5cm, keepaspectratio]{img/gamificacion.jpg}
+ 		 			\caption{Gamificacion.}
+ 		 			\label{fig:Gamificacion.}
+			\end{figure}
 	\end{itemize}
+
+\subsection{Páginas de ayuda}
+\subsection{Estadísticas}
+Para mostrar las estadísticas generadas en forma de gráficas, optamos por usar Highcharts\footnote{\url{http://www.highcharts.com}} dado que dispone de muchos tipos de gráficas y se adapta
+bien a lenguaje de plantillas de Django. Las estadísticas que se muestran son:
+	\begin{itemize}
+		\item Puntuación media diaria.
+		\item Porcentaje de niveles.
+		\item Número de proyectos analizados cada día.
+		\item Puntuación media por habilidad.
+		\item Puntuación media por mal hábito.
+	\end{itemize}
+	Todas estas estadísticas se generan 
+			\begin{figure}[H]
+  				\centering
+ 		 			\includegraphics[width=8cm, keepaspectratio]{img/stats1.jpg}
+ 		 			\caption{Puntuacion media diaria.}
+ 		 			\label{fig:Puntuacion media diaria.}
+			\end{figure}
+			\begin{figure}[H]
+  				\centering
+ 		 			\includegraphics[width=8cm, keepaspectratio]{img/stats2.jpg}
+ 		 			\caption{Gamificacion.}
+ 		 			\label{fig:Gamificacion.}
+			\end{figure}
+
+\subsection{Organizaciones}
+\subsection{Validación de formularios vía AJAX}
+\subsection{Foro}
 
 \section{Base de datos}
 \label{sec:arquitectura}
