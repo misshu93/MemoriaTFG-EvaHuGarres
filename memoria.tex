@@ -297,15 +297,15 @@ En este proyecto, hemos creado una aplicación web que permite a profesores y a a
 	 \begin{figure}[H]
   		\centering
  		 \includegraphics[width=9cm, keepaspectratio]{img/pylint2.jpg}
- 		 \caption{Puntuaci\'on general Pylint}
- 		 \label{fig:Puntuaci\'on general Pylint}
+ 		 \caption{Puntuación general Pylint}
+ 		 \label{fig:PuntuacionGeneralPylint}
 	\end{figure}
 	\item Scrape\footnote{\url{http://happyanalyzing.com/}}: consiste en un analizador de código Scratch en el cual se muestran los bloques de Scratch usados en el proyecto. Cuenta cuantas veces ha usado un determinado bloque, si ha usado listas, variables y cuántos objetos tiene, entre otros:
 	 \begin{figure}[H]
   		\centering
  		 \includegraphics[width=7cm, keepaspectratio]{img/scrape.jpg}
  		 \caption{Vista general de Scrape}
- 		 \label{fig:Vista general de Scrape}
+ 		 \label{fig:VistaGeneralDeScrape}
 	\end{figure}
 	 
 	 
@@ -322,11 +322,11 @@ Las tecnologías que he elegido para llevar a cabo este proyecto han sido las que
 
 \section{Python} 
 Es un lenguaje de programación interpretado, con una sintaxis sencilla y legible. Soporta orientación a objetos, programación imperativa y, en menor medida, programación funcional. 
-Fue creado por Guido van Rossum a finales de los ochenta y el nombre del lenguaje se debe a los humoristas británicos "Monty Python".
+Fue creado por Guido van Rossum a finales de los ochenta y el nombre del lenguaje se debe a los humoristas británicos ``Monty Python''.
 
 De todos los lenguajes de programación aprendidos a lo largo de la carrera, he elegido Python por ser el que tiene una sintaxis más sencilla, es multiplataforma y porque es open source.
 \section{Django} 
-Es un framework web que permite construir aplicaciones web con Python como lenguaje de back-end más rápido y con menos código. Su patrón de arquitectura de software es MVC, Modelo-Vista-Controlador\footnote{\url{http://www.djangobook.com/}}:
+Es un framework web que permite construir aplicaciones web con Python como lenguaje de back-end más rápido y con menos código. Su patrón de arquitectura de software es MVC, Modelo-Vista-Controlador~\cite{TheDjangoBook}:
 	\begin{itemize}
 			\item Modelo: contiene el núcleo de la aplicación.
 			\item Vista: presenta la información obtenida del Modelo.
@@ -336,7 +336,7 @@ Es un framework web que permite construir aplicaciones web con Python como lengu
   		\centering
  		 \includegraphics[width=7cm, keepaspectratio]{img/django.jpg}
  		 \caption{MVC de Django}
- 		 \label{fig:MVC de Django}
+ 		 \label{fig:MVCdeDjango}
 	\end{figure}
 	
 Frente a otros frameworks web de Python como TurboGears o web2py, he elegido Django por ser fácil de usar, prácticamente en pocos pasos se puede tener una web en funcionamiento y porque tiene una buena documentación para poder empezar.
@@ -371,9 +371,9 @@ A continuación se muestra la arquitectura general de Dr. Scratch:
   		\centering
  		 \includegraphics[width=11cm, keepaspectratio]{img/arquitectura.jpg}
  		 \caption{Arquitectura general}
- 		 \label{fig:Arquitectura general Dr. Scratch}
+ 		 \label{fig:ArquitecturaGeneralDrScratch}
 	\end{figure}
-Cuando el servidor de Dr. Scratch recibe una petición HTTP, por ejemplo, drscratch.org/alguna-url, dicha petición es manejada por el archivo \texttt{urls.py}, que contiene todas las urls drscratch/algo. El archivo \texttt{urls.py} va mirando cada una de la urls que tiene en su lista y si la encuentra la enlaza con la función de \texttt{urls.py} asociada. Si no encuentra la url, optará por coger la última. Una vez encontrada la url y la función de \texttt{urls.py} asociada, ejecuta dicha función, al final de la cual devolverá un HttpResponse y con ello una plantilla HTML.
+Cuando el servidor de Dr. Scratch recibe una petición HTTP, por ejemplo, drscratch.org/alguna-url, dicha petición es manejada por el archivo \texttt{urls.py}, que contiene todas las URLs drscratch/algo. El archivo \texttt{urls.py} va mirando cada una de la URLs que tiene en su lista y si la encuentra la enlaza con la función de \texttt{urls.py} asociada. Si no encuentra la URL, optará por coger la última. Una vez encontrada la URL y la función de \texttt{urls.py} asociada, ejecuta dicha función, al final de la cual devolverá un HttpResponse y con ello una plantilla HTML.
 
 \section{Diseño e implementación}
 	\subsection{Nuevos dashboards}
@@ -382,8 +382,8 @@ Cuando el servidor de Dr. Scratch recibe una petición HTTP, por ejemplo, drscrat
 	 \begin{figure}[H]
   		\centering
  		 \includegraphics[width=10cm, keepaspectratio]{img/dashboard1.jpg}
- 		 \caption{Primera versi\'on del dashboard.}
- 		 \label{fig:Primera versi\'on del dashboard.}
+ 		 \caption{Primera versión del dashboard.}
+ 		 \label{fig:PrimeraVersionDelDashboard}
 	\end{figure}
 	
 	Finalmente nos dimos cuenta de que los más pequeños no sabían usar el scroll del ratón y por lo tanto, diseñamos unas nuevas pantallas que mostraran toda la información en una pantalla, sin necesidad de bajar con el ratón, y presentamos información distinta en función del nivel (más nivel, más información):	
@@ -392,14 +392,14 @@ Cuando el servidor de Dr. Scratch recibe una petición HTTP, por ejemplo, drscrat
  		 \includegraphics[width=5cm, keepaspectratio]{img/basico.jpg}
 		 \includegraphics[width=5cm, keepaspectratio]{img/medio.jpg}
 		 \includegraphics[width=5cm, keepaspectratio]{img/alto.jpg}
- 		 \caption{Ultima versi\'on del dashboard.}
- 		 \label{fig:Ultima versi\'on del dashboard.}
+ 		 \caption{Última versión del dashboard.}
+ 		 \label{fig:UltimaVersionDelDashboard}
 	\end{figure}
 
 	\subsubsection{Back-end}
 				
 	Para llegar a esta última versión sólo tuve que añadir al diccionario la URL del proyecto, en caso de que haya analizado por URL, para que el usuario pueda volver a su proyecto fácilmente.
-	Además, reutilizamos la función \texttt{pyploma.py} para que el usuario se pudiera descargar su propio diploma. Para esta funcionalidad creamos una función download\_certificate, en el que se llama a la función \texttt{pyploma.py} modificada pasándole como parámetros el nivel y el nombre del proyecto. Finalmente se monta una respuesta HTTP con contenido de tipo ``application/pdf'' y con el archivo pdf adjuntado. Con esto conseguimos que se descargue automáticamente el diploma.
+	Además, reutilizamos la función \texttt{pyploma.py} para que el usuario se pudiera descargar su propio diploma. Para esta funcionalidad creamos una función download\_certificate, en el que se llama a la función \texttt{pyploma.py} modificada pasándole como parámetros el nivel y el nombre del proyecto. Finalmente se monta una respuesta HTTP con contenido de tipo ``application/pdf'' y con el archivo PDF adjuntado. Con esto conseguimos que se descargue automáticamente el diploma.
 	
 	\subsubsection{Front-end}
 
@@ -414,21 +414,21 @@ En la figura 4.5 vemos los dashboards asociados a cada nivel: básico, medio y al
   				\centering
  		 			\includegraphics[width=10cm, keepaspectratio]{img/tour.jpg}
  		 			\caption{BootstrapTour.}
- 		 			\label{fig:BootstrapTour.}
+ 		 			\label{fig:BootstrapTour}
 			\end{figure}
 			\item Posibilidad de publicar en Twitter tu puntuación \footnote{\url{https://about.twitter.com/es/resources/buttons}}
 			 \begin{figure}[H]
   				\centering
  		 			\includegraphics[width=10cm, keepaspectratio]{img/tweet.jpg}
  		 			\caption{Twitter.}
- 		 			\label{fig:Twitter.}
+ 		 			\label{fig:Twitter}
 			\end{figure}
 			\item Diplomas. Cada vez que el usuario analiza un proyecto, tiene la posibilidad de descargarse un diploma con la puntuación obtenida:
 			\begin{figure}[H]
   				\centering
  		 			\includegraphics[width=10cm, keepaspectratio]{img/diploma.jpg}
  		 			\caption{Diploma.}
- 		 			\label{fig:Diploma.}
+ 		 			\label{fig:Diploma}
 			\end{figure}
 			Dicho diploma se crea gracias al script Pyploma (modificado) y mediante LaTeX.
 			\item Si el usuario ha analizado el proyecto vía URL, puede volver a él fácilmente:
@@ -436,22 +436,22 @@ En la figura 4.5 vemos los dashboards asociados a cada nivel: básico, medio y al
   				\centering
  		 			\includegraphics[width=5cm, keepaspectratio]{img/vuelve_a_tu_proyecto.jpg}
  		 			\caption{Link para volver a Scratch.}
- 		 			\label{fig:Link para volver a Scratch.}
+ 		 			\label{fig:LinkParaVolverAScratch}
 			\end{figure}
 			\item Popups que informan de las malas prácticas.
 			\begin{figure}[H]
   				\centering
  		 			\includegraphics[width=7cm, keepaspectratio]{img/buenas_practicas.jpg}
  		 			\caption{Popup.}
- 		 			\label{fig:Popup.}
+ 		 			\label{fig:Popup}
 			\end{figure}
 
 			\item Gamificación: en todas aquellas habilidades de programación donde ha obtenido 3/3, la barra de progreso se torna verde y se le añade una estrella.
 			\begin{figure}[H]
   				\centering
  		 			\includegraphics[width=5cm, keepaspectratio]{img/gamificacion.jpg}
- 		 			\caption{Gamificaci\'on.}
- 		 			\label{fig:Gamificaci\'on.}
+ 		 			\caption{Gamificación.}
+ 		 			\label{fig:Gamificacion}
 			\end{figure}
 	\end{itemize}
 
@@ -483,21 +483,21 @@ app/
 		\begin{figure}[H]
   		\centering
  		 \includegraphics[width=12cm, keepaspectratio]{img/esquemaStatistics.jpg}
- 		 \caption{Esquema de la funci\'on Statistics.}
- 		 \label{fig:Esquema de la funci\'on Statistics.}
+ 		 \caption{Esquema de la función Statistics.}
+ 		 \label{fig:Esquema de la funcion Statistics}
 	\end{figure}
 				
-	En el esquema de arriba podemos ver cómo se generan las estadísticas. En primer lugar, inicializamos las variables, diccionarios y listas y creamos una lista de fechas, desde una que indiquemos hasta el día de hoy. Después vamos recorriendo esa lista de fechas, consultando en la BBDD y recogiendo los siguientes datos:
+	En el esquema de arriba podemos ver cómo se generan las estadísticas. En primer lugar, inicializamos las variables, diccionarios y listas y creamos una lista de fechas, desde una que indiquemos hasta el día de hoy. Después vamos recorriendo esa lista de fechas, consultando en la base de datos y recogiendo los siguientes datos:
 		\begin{itemize}
 			\item Media de puntuación diaria.
 			\item Número de proyectos analizados cada día.
 			\item Todas las puntuaciones.
 		\end{itemize}
 		
-	Una vez hecho esto, contamos el número total de proyectos y el número de proyectos que se encuentra en cada nivel (bajo, medio, alto) para poder generar una gráfica en forma de ``quesito". 
-	Finalmente calculamos la puntuación media por habilidad del pensamiento computacional y por malas prácticas, y guardamos en la BBDD.
+	Una vez hecho esto, contamos el número total de proyectos y el número de proyectos que se encuentra en cada nivel (bajo, medio, alto) para poder generar una gráfica en forma de ``quesito''. 
+	Finalmente calculamos la puntuación media por habilidad del pensamiento computacional y por malas prácticas, y guardamos en la base de datos.
 	
-	Haciéndolo de esta manera, la función alojada en \texttt{views.py} mencionada anteriormente, sólo tiene que consultar la BBDD para obtener las estadísticas y devolverlas en un diccionario en la respuesta HTTP.
+	Haciéndolo de esta manera, la función alojada en \texttt{views.py} mencionada anteriormente, sólo tiene que consultar la base de datos para obtener las estadísticas y devolverlas en un diccionario en la respuesta HTTP.
 	\subsubsection{Front-end}
 	
 	Para mostrar las estadísticas generadas en forma de gráficas, optamos por usar Highcharts\footnote{\url{http://www.highcharts.com}} dado que dispone de muchos tipos de gráficas y se adapta
@@ -513,14 +513,14 @@ bien a lenguaje de plantillas de Django. Las estadísticas que se muestran son:
 			\begin{figure}[H]
   				\centering
  		 			\includegraphics[width=8cm, keepaspectratio]{img/stats1.jpg}
- 		 			\caption{Puntuaci\'on media diaria.}
- 		 			\label{fig:Puntuaci\'on media diaria.}
+ 		 			\caption{Puntuación media diaria.}
+ 		 			\label{fig:Puntuacion media diaria.}
 			\end{figure}
 			\begin{figure}[H]
   				\centering
  		 			\includegraphics[width=8cm, keepaspectratio]{img/stats2.jpg}
- 		 			\caption{Gamificaci\'on.}
- 		 			\label{fig:Gamificaci\'on.}
+ 		 			\caption{Gamificación.}
+ 		 			\label{fig:Gamificacion.}
 			\end{figure}
 	Para usar Highcharts simplemente tenemos que descargar e importar la librería y pasarle una lista de números. Por ejemplo:
 	\begingroup
@@ -553,17 +553,17 @@ $(function () {
 
     			\end{verbatim}
 	\endgroup
-	Los únicos datos que tenemos que rellenar son: xAxis, con la lista de fechas, y en series el campo ``data", la lista de puntuaciones. También rellenamos los campos title, con el título de la gráfica, tooltip con las unidades de la gráfica y series(name) con el nombre de los datos que estamos representando.
+	Los únicos datos que tenemos que rellenar son: xAxis, con la lista de fechas, y en series el campo ``data'', la lista de puntuaciones. También rellenamos los campos title, con el título de la gráfica, tooltip con las unidades de la gráfica y series(name) con el nombre de los datos que estamos representando.
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 	\subsection{Organizaciones}
 		\subsubsection{Página principal}
-		Se trata de una página donde la función principal es la de analizar. Consta de dos partes: análisis único (por subida de fichero o CSV) y análisis masivo (por subida de csv). Si analizamos un solo fichero, se nos mostrarían los dashboards explicados anteriormente. En cambio, si analizamos un fichero CSV, se nos mostraría la página de descargas para descargar el resultado del análisis.
+		Se trata de una página donde la función principal es la de analizar. Consta de dos partes: análisis único (por subida de fichero o CSV) y análisis masivo (por subida de CSV). Si analizamos un solo fichero, se nos mostrarían los dashboards explicados anteriormente. En cambio, si analizamos un fichero CSV, se nos mostraría la página de descargas para descargar el resultado del análisis.
 		\begin{figure}[H]
   		\centering
  		 \includegraphics[width=12cm, keepaspectratio]{img/inicio_org.jpg}
- 		 \caption{P\'agina principal de organizaciones.}
- 		 \label{fig:P\'agina principal de organizaciones.}
+ 		 \caption{Página principal de organizaciones.}
+ 		 \label{fig:Pagina principal de organizaciones.}
 		\end{figure}
 		\subsubsection{Estadísticas}
 		En esta sección se muestran unas estadísticas individuales de todos los proyectos analizados por el usuario. De esta manera se podrá tener un seguimiento de la evolución del nivel de pensamiento computacional que adquieren los miembros de dicha organización.
@@ -571,8 +571,8 @@ $(function () {
 		\begin{figure}[H]
   		\centering
  		 \includegraphics[width=12cm, keepaspectratio]{img/stats_org.jpg}
- 		 \caption{P\'agina de estad\'isticas de organizaciones.}
- 		 \label{fig:P\'agina de estad\'isticas de organizaciones.}
+ 		 \caption{Página de estadísticas de organizaciones.}
+ 		 \label{fig:Pagina de estadisticas de organizaciones.}
 		\end{figure}
 		
 		Estas estadísticas se generan de la siguiente manera:
@@ -580,8 +580,8 @@ $(function () {
 		\begin{figure}[H]
   		\centering
  		 \includegraphics[width=12cm, keepaspectratio]{img/esquema_stats_org.jpg}
- 		 \caption{Esquema estad\'isticas de organizaciones.}
- 		 \label{fig:Esquema estad\'isticas de organizaciones.}
+ 		 \caption{Esquema estadísticas de organizaciones.}
+ 		 \label{fig:Esquema estadisticas de organizaciones.}
 		\end{figure}
 		La manera de calcularlo es muy similar a las estadísticas generales, con la diferencia de que aquí no contamos el número de proyectos analizados ni el porcentaje de proyectos que hay en cada nivel.
 		
@@ -590,25 +590,25 @@ $(function () {
 		\begin{figure}[H]
   		\centering
  		 \includegraphics[width=3cm, keepaspectratio]{img/learn.jpg}
- 		 \caption{Men\'u desplegable.}
- 		 \label{fig:Men\'u desplegable.}
+ 		 \caption{Menú desplegable.}
+ 		 \label{fig:Menu desplegable.}
 		\end{figure}
 		\subsubsection{Descargas}
 		En esta sección se podrá descargar todos los resultados de los análisis por CSV, ordenados por fecha. 
 		\begin{figure}[H]
   		\centering
  		 \includegraphics[width=12cm, keepaspectratio]{img/descargas_org.jpg}
- 		 \caption{Descargas de csv.}
+ 		 \caption{Descargas de fichero CSV.}
  		 \label{fig:Descargas de csv.}
 		\end{figure}
 		La función que se encarga de esto realiza lo siguiente:
 		\begin{figure}[H]
   		\centering
  		 \includegraphics[width=10cm, keepaspectratio]{img/esquema_descargas.jpg}
- 		 \caption{Funci\'on downloads.}
- 		 \label{fig:Funci\'on downloads.}
+ 		 \caption{Función downloads.}
+ 		 \label{fig:Funcion downloads.}
 		\end{figure}
-		Lo que hace esta función es recopilar todos los ficheros CSV. Después los organiza en un diccionario de páginas y en cada página guarda 10 ficheros CSV. Si la petición es un ``POST", montamos una respuesta HTTP donde el contenido es de tipo \texttt{text/csv} y el adjunto es el fichero CSV. Automáticamente el fichero se descargará en el ordenador del usuario. Si la petición es un ``GET"  simplemente se mostrará la página con las descargas disponibles.
+		Lo que hace esta función es recopilar todos los ficheros CSV. Después los organiza en un diccionario de páginas y en cada página guarda 10 ficheros CSV. Si la petición es un ``POST'', montamos una respuesta HTTP donde el contenido es de tipo \texttt{text/csv} y el adjunto es el fichero CSV. Automáticamente el fichero se descargará en el ordenador del usuario. Si la petición es un ``GET''  simplemente se mostrará la página con las descargas disponibles.
 		\subsubsection{Ajustes}
 		Por último, incluimos un apartado de ajustes generales, donde se puede cambiar la contraseña y la foto de perfil. El procedimiento de cambio de contraseña se explica en el siguiente apartado.
 		Para cambiar la foto de perfil nos cambiamos de directorio de trabajo a la carpeta donde queremos guardar la imagen. Después, si el usuario tiene ya una imagen de perfil, la borramos y guardamos la nueva para no consumir demasiada memoria en el servidor y lo guardamos también en la base de datos.
@@ -621,39 +621,39 @@ $(function () {
 		\subsubsection{Restauración de contraseña} 
 	Una funcionalidad básica imprescindible cuando se crean cuentas de usuario es la posibilidad de cambiar la contraseña. El procedimiento para ello se divide en dos partes: 
 	\begin{enumerate}
-		\item El usuario pide restaurar su contraseña. Se le manda un email y en dicho email aparece una url única.
-		\item El usuario pulsa dicha url única que le redirige a una página donde escribe su contraseña dos veces.
+		\item El usuario pide restaurar su contraseña. Se le manda un email y en dicho email aparece una URL única.
+		\item El usuario pulsa dicha URL única que le redirige a una página donde escribe su contraseña dos veces.
 	\end{enumerate}
 	
 	Para cada una de las partes se ha desarrollado dos funciones llamadas \texttt{changePwd} y \texttt{reset\_password\_confirm}. A continuación se explican ambas funciones:
 		\begin{figure}[H]
   		\centering
  		 \includegraphics[width=14cm, keepaspectratio]{img/changePwd_esquema.jpg}
- 		 \caption{Esquema de la funci\'on \texttt{changePwd}.}
- 		 \label{fig:Esquema de la funci\'on \texttt{changePwd}.}
+ 		 \caption{Esquema de la función \texttt{changePwd}.}
+ 		 \label{fig:Esquema de la funcion changePwd.}
 		\end{figure}
-	En la figura de arriba vemos que codificamos el pk en base 64 y generamos un token para el usuario. Ambos códigos formarán una url única para cada usuario.Después rellenamos un diccionario con el email de destino, el pk codificado, el token y el nombre de usuario. Con dicho diccionario rellenamos una plantilla HTML con el texto y lo enviamos.
+	En la figura de arriba vemos que codificamos el pk en base 64 y generamos un token para el usuario. Ambos códigos formarán una URL única para cada usuario.Después rellenamos un diccionario con el email de destino, el pk codificado, el token y el nombre de usuario. Con dicho diccionario rellenamos una plantilla HTML con el texto y lo enviamos.
 	El usuario recibiría un email como el siguiente:
 		\begin{figure}[H]
   		\centering
  		 \includegraphics[width=12cm, keepaspectratio]{img/email_pwd.jpg}
  		 \caption{Email de restablecimiento de contraseña.}
- 		 \label{fig:Email de restablecimiento de contraseña.}
+ 		 \label{fig:Email de restablecimiento de contrasena.}
 		\end{figure}
-	Una vez pulsado en el link que aparece en el email, se ejecutaría la función \\
+	Una vez pulsado en el enlace que aparece en el email, se ejecutaría la función \\
 	 \texttt{reset\_password\_confirm}. 
 		\begin{figure}[H]
   		\centering
  		 \includegraphics[width=11cm, keepaspectratio]{img/reset_pwd_confirm.jpg}
- 		 \caption{Esquema de la funci\'on \texttt{reset\_password\_confirm}.}
- 		 \label{fig:Esquema de la funci\'on \texttt{reset\_password\_confirm}.}
+ 		 \caption{Esquema de la función \texttt{reset\_password\_confirm}.}
+ 		 \label{fig:Esquema de la funcion resetpasswordconfirm.}
 		\end{figure}
-	Cuando se recibe el email con la url única, accedemos a un formulario con dos campos para introducir la nueva contraseña dos veces. La función decodifica el pk y con él busca el usuario. Después comprueba que ambas contraseñas son iguales. Si son iguales guarda la nueva contraseña y si no, muestra una pantalla de error.
+	Cuando se recibe el email con la URL única, accedemos a un formulario con dos campos para introducir la nueva contraseña dos veces. La función decodifica el pk y con él busca el usuario. Después comprueba que ambas contraseñas son iguales. Si son iguales guarda la nueva contraseña y si no, muestra una pantalla de error.
 		
-		\subsubsection{Análisis masivo: csv(traducción de diccionarios)}
-	Al analizar un CSV con proyectos, siempre se devuelve otro CSV con la puntuación total y la puntuación parcial de cada habilidad. Como dichos conceptos se entienden mejor en el idioma de cada usuario decidimos traducir los conceptos a varios idiomas. Esto se hizo a través de una función externa para evitar crear una función demasiado larga. Esta función se creó en un paquete externo llamado \texttt{org.py} y se llama \texttt{translate\_CT}. Se le pasa como parámetro el idioma en el que está el navegador y se devuelve un diccionario con los conceptos traducidos. Así, se va rellenando las filas y columnas de la siguiente manera: \texttt{dic["<concepto>"]}.
+		\subsubsection{Análisis masivo: CSV (traducción de diccionarios)}
+	Al analizar un CSV con proyectos, siempre se devuelve otro CSV con la puntuación total y la puntuación parcial de cada habilidad. Como dichos conceptos se entienden mejor en el idioma de cada usuario decidimos traducir los conceptos a varios idiomas. Esto se hizo a través de una función externa para evitar crear una función demasiado larga. Esta función se creó en un paquete externo llamado \texttt{org.py} y se llama \texttt{translate\_CT}. Se le pasa como parámetro el idioma en el que está el navegador y se devuelve un diccionario con los conceptos traducidos. Así, se va rellenando las filas y columnas de la siguiente manera: \texttt{dic[``<concepto>'']}.
 	
-	\\
+	\vspace{2cm}
 	
 	Para crear el diseño de esta sección de la web, optamos por utilizar la herencia de plantillas que permite Django. Para ello creamos una plantilla base que contuviera la cabecera, el menú vertical (\texttt{base.html}) y el pie de página y simplemente creamos nuevas plantillas HTML donde heredaremos de la primera.
 \begin{figure}[H]
@@ -673,20 +673,20 @@ Los enlaces a estas páginas se muestran al analizar un proyecto:
 			\begin{figure}[H]
   				\centering
  		 			\includegraphics[width=5cm, keepaspectratio]{img/pag_ayuda.jpg}
- 		 			\caption{Acceso a p\'aginas de ayuda.}
- 		 			\label{fig:Acceso a p\'aginas de ayuda.}
+ 		 			\caption{Acceso a páginas de ayuda.}
+ 		 			\label{fig:Acceso a paginas de ayuda.}
 			\end{figure}
-En el ejemplo, si quisiéramos mejorar la habilidad `Control de flujo" pincharíamos sobre el y veríamos lo siguiente:
+En el ejemplo, si quisiéramos mejorar la habilidad ``Control de flujo'' pincharíamos sobre el y veríamos lo siguiente:
 			\begin{figure}[H]
   				\centering
  		 			\includegraphics[width=7cm, keepaspectratio]{img/pag_ayuda1.jpg}
 					\includegraphics[width=7cm, keepaspectratio]{img/pag_ayuda2.jpg}
- 		 			\caption{Acceso a p\'aginas de ayuda.}
- 		 			\label{fig:Acceso a p\'aginas de ayuda.}
+ 		 			\caption{Acceso a páginas de ayuda.}
+ 		 			\label{fig:Acceso a paginas de ayuda2.}
 			\end{figure}
 Se muestran tres apartados para subir de 0 a 1, de 1 a 2 y de 2 a 3. En cada apartado veremos ejemplos visuales de lo que el usuario podría hacer para subir de puntuación en esa habilidad, y algunas explicaciones sobre los bloque que se utilizan en el ejemplo. 
 Para mostrar los bloques hemos utilizado una librería llamada Scratch blocks\footnote{\url{https://github.com/tjvr/scratchblocks}} que nos permite generar bloques de Scratch desde la plantilla HTML.
-Scratch blocks tiene una sintaxis muy parecida a la de sus bloques y está disponible para numerosos idiomas. Por ejemplo si quisiéramos mostrar el bloque "al presionar bandera verde" sólo tendríamos que escribir:
+Scratch blocks tiene una sintaxis muy parecida a la de sus bloques y está disponible para numerosos idiomas. Por ejemplo si quisiéramos mostrar el bloque ``al presionar bandera verde'' sólo tendríamos que escribir:
 
 \begingroup
 		\fontsize{7pt}{8pt}\selectfont
@@ -734,7 +734,7 @@ Testing.sb2
 
 	Se modificado el procesador de Dead Code de tal manera que se convierte a diccionario todo lo que hay a partir de la tercera línea mediante la función \texttt{ast.literal\_eval}.
 
-	 Después, se recopilan todas las claves del diccionario, que serán todos los objetos donde hay código muerto y conforme se va recorriendo el objeto y contando los bloques que no se ejecutan, se va formando un string con el formato: ``objeto: número de bloques que no se ejecutan " . Finalmente se guarda en la base de datos y se forma un diccionario con dos claves: ``blocks" y ``total" para entregarlo en una respuesta HTTP al analizar un proyecto.
+	 Después, se recopilan todas las claves del diccionario, que serán todos los objetos donde hay código muerto y conforme se va recorriendo el objeto y contando los bloques que no se ejecutan, se va formando un string con el formato: ``objeto: número de bloques que no se ejecutan'' . Finalmente se guarda en la base de datos y se forma un diccionario con dos claves: ``blocks'' y ``total'' para entregarlo en una respuesta HTTP al analizar un proyecto.
 	Por ejemplo:
 	 \begin{figure}[H]
   		\centering
@@ -743,7 +743,7 @@ Testing.sb2
  		 \caption{Esquema DeadCode.}
  		 \label{fig:Esquema DeadCode.}
 	\end{figure}
-	En la figura de arriba vemos un ejemplo de lo que devolvería el plugin de \texttt{Hairball} ``Dead Code". El procesador que se ha desarrollado calcularía la longitud de la sub-lista asociada a ``Witch", en este caso, dos programas que no se ejecutan y el objeto ``Ghost"  tendría otros dos. 
+	En la figura de arriba vemos un ejemplo de lo que devolvería el plugin de \texttt{Hairball} ``Dead Code''. El procesador que se ha desarrollado calcularía la longitud de la sub-lista asociada a ``Witch'', en este caso, dos programas que no se ejecutan y el objeto ``Ghost''  tendría otros dos. 
 	
 	\subsection{Foro} 
 	\subsubsection{Back-end}
@@ -758,7 +758,7 @@ Testing.sb2
 	\end{figure}
 		
 	En esta función primero comprobamos si el formulario está bien completado, se guardará el comentario en la base de datos. Cabe destacar que el usuario sólo podrá comentar si está registrado.
-	Después se recopilan todos los comentarios y se ordenan de forma que el primero sea el más nuevo (por fecha) y el último sea el más antiguo. Finalmente se crea un diccionario de "hojas" donde la hoja 0 será la que tenga los comentarios más recientes y así sucesivamente, y se devuelve un objeto HTTP con la plantilla HTML y el diccionario.
+	Después se recopilan todos los comentarios y se ordenan de forma que el primero sea el más nuevo (por fecha) y el último sea el más antiguo. Finalmente se crea un diccionario de ``hojas'' donde la hoja 0 será la que tenga los comentarios más recientes y así sucesivamente, y se devuelve un objeto HTTP con la plantilla HTML y el diccionario.
 	\subsubsection{Front-end}
 	
 	La función que se comenta en la parte Back-end da lugar a la siguiente pantalla:
@@ -770,20 +770,20 @@ Testing.sb2
 	\end{figure}
 	Se trata de un foro muy sencillo, donde se muestran los 10 últimos mensajes y el resto de mensajes se pueden ver cambiando de página. El cambio de página se ha realizado mediante jQuery y con la ayuda del diccionario de páginas que se entrega con la plantilla HTML.
 \subsection{Validación de formularios vía AJAX}
-Por último, he querido mejorar la validación de formularios, ya que inicialmente había que envíar el formulario, en el servidor se veía si estaba bien y luego se devolvía una pantalla de error en el caso de que el formulario no estuviera correctamente cumplimentado. Para evitar todo ese proceso he utilizado AJAX, que permite interactuar con el servidor sin tener que recargar la página. El proceso es el siguiente:
+Por último, he querido mejorar la validación de formularios, ya que inicialmente había que enviar el formulario, en el servidor se veía si estaba bien y luego se devolvía una pantalla de error en el caso de que el formulario no estuviera correctamente cumplimentado. Para evitar todo ese proceso he utilizado AJAX, que permite interactuar con el servidor sin tener que recargar la página. El proceso es el siguiente:
 \begin{enumerate}
 \item El usuario teclea en el formulario su correo (por ejemplo).
 \item Mediante jQuery se detecta el evento \texttt{keyup}.
 \item Cuando se detecta dicho evento, se manda por AJAX una consulta a la URL \texttt{/searchemail/} con el email tecleado.
 \item La URL \texttt{/searchemail/} nos redirige a la función con el mismo nombre y en ella se busca en la BBDD.
 \item Si no existe en la BBDD no hacemos nada, y si sí existe, se devuelve un JSON indicando que el email ya existe.
-\item La plantilla recibe el JSON y ejecuta la función jQuery \texttt{emailexists}, que introduce un elemento texttt{alert} de Bootstrap debajo del recuadro del email.
+\item La plantilla recibe el JSON y ejecuta la función jQuery \texttt{emailexists}, que introduce un elemento \texttt{alert} de Bootstrap debajo del recuadro del email.
 \end{enumerate}
 \begin{figure}[H]
   		\centering
  		 \includegraphics[width=10cm, keepaspectratio]{img/AJAX.png}
- 		 \caption{Validaci\'on de formularios vía AJAX.}
- 		 \label{fig:Validaci\'on de formularios vía AJAX.}
+ 		 \caption{Validación de formularios vía AJAX.}
+ 		 \label{fig:Validacion de formularios via AJAX.}
 	\end{figure}
 
 \section{Base de datos}
@@ -811,15 +811,15 @@ Gracias al seguimiento realizado por Google Analytics de Dr. Scratch, hemos podi
 	\begin{figure}[H]
   		\centering
  		 \includegraphics[width=12cm, keepaspectratio]{img/GA1.jpg}
- 		 \caption{N\'umero de sesiones.}
- 		 \label{fig:N\'umero de sesiones.}
+ 		 \caption{Número de sesiones.}
+ 		 \label{fig:Numero de sesiones.}
 	\end{figure}
 En la gráfica de arriba podemos observar el número de sesiones que ha habido desde el 1 de abril (cuando se empezó a usar Google Analytics) hasta el día 26 de enero de 2016.
 	\begin{figure}[H]
   		\centering
  		 \includegraphics[width=10cm, keepaspectratio]{img/GA2.jpg}
- 		 \caption{Tr\'afico en la web.}
- 		 \label{fig:Tr\'afico en la web.}
+ 		 \caption{Tráfico en la web.}
+ 		 \label{fig:Trafico en la web.}
 	\end{figure}
 De forma más detallada, tenemos de forma numérica el trafico que ha tenido Dr. Scratch:
 \begin{itemize}
@@ -836,8 +836,8 @@ Dr. Scratch también ha tenido impacto en el mundo:
   		\centering
  		 \includegraphics[width=10cm, keepaspectratio]{img/mundo.jpg}
 		  \includegraphics[width=10cm, keepaspectratio]{img/paises.jpg}
- 		 \caption{Tr\'afico en la web.}
- 		 \label{fig:Tr\'afico en la web.}
+ 		 \caption{Tráfico en la web.}
+ 		 \label{fig:Trafico en la web2.}
 	\end{figure}
 	
 Finalmente destacar que el número de proyectos analizados es de 60.000 proyectos aproximadamente.
@@ -850,7 +850,7 @@ Finalmente destacar que el número de proyectos analizados es de 60.000 proyectos
 \cleardoublepage
 \chapter{Conclusiones}
 \label{chap:conclusiones}
-Como se ha ido comentando a lo largo de esta memoria, hemos realizado distintos talleres en colegios tanto con niños como con profesores. El resultado que hemos tenido en todos ellos ha sido muy postivo. Los niños mostraban interés en mejorar su puntuación e incluso lo conseguían y retaban a sus compañeros. Cabe destacar un caso en el que una niña consiguió subir de 13 a 18 en una sola hora. 
+Como se ha ido comentando a lo largo de esta memoria, hemos realizado distintos talleres en colegios tanto con niños como con profesores. El resultado que hemos tenido en todos ellos ha sido muy positivo. Los niños mostraban interés en mejorar su puntuación e incluso lo conseguían y retaban a sus compañeros. Cabe destacar un caso en el que una niña consiguió subir de 13 a 18 en una sola hora. 
 En cuanto a los profesores, hemos conseguido que se registren en Dr. Scratch, en la parte de organizaciones, unas 13 personas.
 
 Además de los talleres realizados, también organizamos un concurso de programación en Scratch en el que se promovían vocaciones científicas, es decir, los niños tenían que entregar un proyecto en Scratch que explicara algún concepto tecnológico, matemático, físico, etc. Participaron niños de primaria y secundaria de toda España. 
@@ -861,7 +861,7 @@ La entrega de premios tuvo lugar en Campus Google de Madrid. Fue un emotivo encu
 
 \begin{itemize}
   \item Mejorar los paneles mostrados al analizar, con el fin de simplificar lo máximo posible la información mostrada al usuario, teniendo en cuenta que está dirigida principalmente a niños de distinta edad y nivel de pensamiento computacional. Esto se ha conseguido. Hemos adaptado la página de resultados lo máximo posible para los niños, simplificando la información mostrada. Nos dimos cuenta de que los niños no suelen utilizar el scroll por lo que tuvimos que condensar la información. Se introdujeron elementos de gamificación tales como las barras de progreso, enseñando a usar las fracciones de forma indirecta, estrellas en aquellas habilidades que tienen la puntuación completa, puntuación general, botón de Twitter para compartir sus resultados y se diseñó un logo identificativo de cada nivel.
-  \item Web multilenguaje: esto se ha conseguido con creces. Gracias a la colaboración de usuarios de Dr. Scratch de todo el mundo tenemos Dr. Scratch completamente traducido a los siguientes idiomas: castellano, inglés, gallego, portugués, portugués de brasil, catalán, griego, ruso, alemán e incluso chino. Gracias a esto, Dr. Scratch sigue llegando cada vez a más sitios. 
+  \item Web multilenguaje: esto se ha conseguido con creces. Gracias a la colaboración de usuarios de Dr. Scratch de todo el mundo tenemos Dr. Scratch completamente traducido a los siguientes idiomas: castellano, inglés, gallego, portugués, portugués de Brasil, catalán, griego, ruso, alemán e incluso chino. Gracias a esto, Dr. Scratch sigue llegando cada vez a más sitios. 
    \item Migrar el servidor a la nube para un ofrecer un mejor rendimiento. Esto se ha conseguido gracias a Azure mejorando así la calidad del servicio que se ofrece. 
   \item Registro de usuarios. Crear cuentas de organizaciones, profesores y alumnos, donde se pueda llevar un seguimiento de los proyectos analizados. Hemos conseguido tener cuentas de organizaciones y alumnos. Sin embargo, no ha sido posible desarrollar las cuentas de profesores debido al tiempo y a la peculiaridad que tiene: son cuentas que pueden crear otras cuentas de usuarios(sus alumnos).
    \item Análisis masivo de proyectos. También se ha conseguido.
@@ -878,7 +878,7 @@ En el proyecto he aplicado los conocimientos aprendidos de las siguientes asigna
  \item Informática I y II: fueron las primeras asignaturas de programación, donde yo aprendí a programar por primera vez. Aunque el lenguaje enseñado en estas asignaturas no fue Python ni ninguno de los utilizados en este proyecto, fue imprescindible para aprender a programar y dar los primeros pasos.
  \item Arquitectura de Internet y Sistemas Telemáticos para Medios Audiovisuales: sin estas asignaturas no habría sabido cómo funciona el protocolo IP o HTTP, o el concepto de servidor entre otras muchas cosas. Ha sido muy útil de cara a subir al servidor las actualizaciones pertinentes o de cara a resolver problemas en el servidor.
  \item Construcción de servicios y aplicaciones Audiovisuales en Internet: gracias a esta asignatura aprendí lo básico de HTML, CSS y Javascript.
-  \item Protocolos para la transmisión de audio y video en internet: en esta asignatura aprendí a programar en Python, entre otras cosas.
+  \item Protocolos para la transmisión de audio y vídeo en internet: en esta asignatura aprendí a programar en Python, entre otras cosas.
   \item Laboratorio de tecnologías audiovisuales en la web: en esta asignatura aprendí a crear mi primer proyecto en Django.
 \end{enumerate}
 
@@ -899,7 +899,7 @@ En este proyecto he aprendido numerosas cosas:
 Además, se han ido haciendo hackathones mensuales con todo el equipo de Dr. Scratch, donde hemos aprendido conceptos más avanzados de Python y Django:
 \begin{itemize}
 \item Unit Tests. Una parte muy importante y que como ya comentaba, ocupa un 80\% del tiempo, es la parte de testing. En el desarrollo de software podemos hablar de dos tipos de pruebas: prueba unitarias y pruebas integradas. Las primeras consisten en probar cada función por separado y comprobar que la salida es la correcta. Las segundas, en cambio, consisten en comprobar que todas las funciones juntas, funcionan bien, como unos engranajes. En Django existe un fichero específico llamado \texttt{tests.py} que facilitan la tarea a la hora de realizar pruebas unitarias.
-\item Estructuras avanzadas de Python: más allá de las clásicas listas y diccionarios a los que estamos acostumbrados ver en cualquier lenguaje de programación, Python dispone de estructuras más avanzadas, como las "List Comprehensions" que permiten realizar operaciones dentro de una lista de forma rápida y limpia. También tenemos los llamados "sets", que consiste en una colección no ordenada de valores no duplicados.
+\item Estructuras avanzadas de Python: más allá de las clásicas listas y diccionarios a los que estamos acostumbrados ver en cualquier lenguaje de programación, Python dispone de estructuras más avanzadas, como las ``List Comprehensions'' que permiten realizar operaciones dentro de una lista de forma rápida y limpia. También tenemos los llamados ``sets'', que consiste en una colección no ordenada de valores no duplicados.
 \end{itemize}
 
 En resumen, creo que he aprendido muchas cosas nuevas y he mejorado en las que ya sabía.
@@ -919,8 +919,8 @@ Dr. Scratch puede ser extendido y optimizado de muchas formas:
 
 \section{Valoración personal}
 \label{sec:valoracion}
-Hace poco más de un año, justo antes de empezar este proyecto, recuerdo que me dijeron: ``El proyecto de fin de grado no sirve para nada, no te esfuerces mucho..." 
-Hoy, me doy cuenta de lo que ha significado para mí participar en este proyecto. Ha significado saber qué me gusta y qué no. Ha significado saber dónde me gustaría estar dentro de 10 años (la pregunta más difícil que me han hecho). Ha significado saber qué quiere decir la frase ``encuentra un trabajo que te guste y no tendrás que trabajar nunca más".
+Hace poco más de un año, justo antes de empezar este proyecto, recuerdo que me dijeron: ``El proyecto de fin de grado no sirve para nada, no te esfuerces mucho...'' 
+Hoy, me doy cuenta de lo que ha significado para mí participar en este proyecto. Ha significado saber qué me gusta y qué no. Ha significado saber dónde me gustaría estar dentro de 10 años (la pregunta más difícil que me han hecho). Ha significado saber qué quiere decir la frase ``encuentra un trabajo que te guste y no tendrás que trabajar nunca más''.
 
 Aquí acaba una etapa de mi vida que no podría haber terminado mejor que habiendo realizado este proyecto, aunque estoy segura que la siguiente superará a esta y así continuamente... 
 
