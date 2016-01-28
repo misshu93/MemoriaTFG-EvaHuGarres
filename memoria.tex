@@ -172,11 +172,11 @@ Por último, quiero darle las gracias a mi amor, Alejandro. Por hacerme feliz dur
 %\addcontentsline{toc}{chapter}{Resumen} % si queremos que aparezca en el índice
 \markboth{RESUMEN}{RESUMEN} % encabezado
 
-Este proyecto trata de mejorar la versión inicial de Dr. Scratch. Dr. Scratch es una herramienta web de código abierto que permite a profesores y alumnos, y usuarios en general, analizar sus proyectos Scratch y ver si lo ha programado correctamente, aprender de sus errores y obtener algo de realimentación para subir su nivel de pensamiento computacional
+Este proyecto trata de mejorar la versión inicial de Dr. Scratch. Dr. Scratch es una herramienta web de código abierto que permite a profesores y alumnos, y usuarios en general, analizar sus proyectos Scratch y ver si lo ha programado correctamente, aprender de sus errores y obtener algo de realimentación para subir su nivel de pensamiento computacional.
 
 Se ha realizado principalmente con el framework web Django y con el plugin Hairball, además de Bootstrap y otras tecnologías web.
 
-El proyecto surge de una línea de investigación donde se explora la idea de que la programación puede mejorar el aprendizaje de otras asignaturas
+El proyecto surge de una línea de investigación donde se explora la idea de que la programación puede mejorar el aprendizaje de otras asignaturas.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Resumen en inglés
 
@@ -184,9 +184,9 @@ El proyecto surge de una línea de investigación donde se explora la idea de que 
 %\addcontentsline{toc}{chapter}{Summary} % si queremos que aparezca en el índice
 \markboth{SUMMARY}{SUMMARY} % encabezado
 
-This project tries to improve the first version of Dr. Scratch. Dr. Scratch is a web tool open-source that allows to teachers and students, and all users, analyze their Scratch projects and they can see if they have coded it correctly, learn about their mistakes and obtain some feedback in order to improve their computational thinking level. 
+This project tries to improve the first version of Dr. Scratch. Dr. Scratch is a free/open source web tool that allows teachers and students, and every user, to analyze their Scratch projects to check if they have coded it correctly, learn about their mistakes and obtain some feedback in order to improve their computational thinking level.
 
-It has been done with the framework Django and Hairball plugin primarily, in addition to Bootstrap and other web technologies.
+It has been developed with the framework Django and Hairball plugin primarily, in addition to Bootstrap and other web technologies.
 
 This project arises from a research where the idea that programming can enhance learning in other subjects is explored.
 
@@ -236,7 +236,7 @@ A raíz de elegir este proyecto y conocer a Jesús Moreno (co-fundador de la asoci
 
 Desde entonces, la plataforma ha cambiado mucho según se han ido haciendo encuestas y talleres. Gracias a la comunidad de usuarios que usan y/o han usado Dr. Scratch hemos podido seguir mejorando y creciendo en cada actualización. 
 
-En esta memoria de trabajo de fin de grado, voy a explicar los distintos objetivos marcados al inicio del proyecto. Después explicaré qué tecnologías he utilizado, como he desarrollado cada funcionalidad, su back-end y su front-end. Finalmente mostraré los resultados obtenidos y algunas conclusiones a las que he llegado en el último mes.
+En esta memoria de trabajo de fin de grado, voy a explicar los distintos objetivos marcados al inicio del proyecto. Después explicaré qué tecnologías he utilizado, cómo he desarrollado cada funcionalidad, su back-end y su front-end. Finalmente mostraré los resultados obtenidos y algunas conclusiones a las que he llegado en el último mes.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -276,7 +276,7 @@ El objetivo de este proyecto es aportar realimentación sobre el nivel de pensami
 En este proyecto, hemos creado una aplicación web que permite a profesores y a alumnos analizar sus proyectos programados en Scratch. Actualmente existen varias herramientas que analizan estáticamente el código fuente de programas escritos en distintos lenguajes para ofrecer retroalimentación al usuario:
 \begin{itemize}
 	\item Lint: consiste en una herramienta de análisis estático de código escrito en C, que detectaba código sospechoso o incompatible entre distintas arquitecturas en programas escritos en C; es decir, errores de programación que escapan al habitual análisis sintáctico que hace el compilador.
-	\item Pylint\footnote{\url{http://www.pylint.org}}: consiste en un analizado estático de código Python inspirado en Lint, que se puede instalar en la línea de comandos y ofrece información sobre cómo de bien está escrito nuestro código según la guía de estilos PEP-8 y muestra una serie de mensajes clasificados bajo las siguientes categorías:
+	\item Pylint\footnote{\url{http://www.pylint.org}}: consiste en un analizador estático de código Python inspirado en Lint, que se puede instalar en la línea de comandos y ofrece información sobre cómo de bien está escrito nuestro código según la guía de estilos PEP-8 y muestra una serie de mensajes clasificados bajo las siguientes categorías:
 	 \begin{itemize}
 	 	\item Refactorización: Asociado a una violación en alguna buena práctica.
 		\item Convención: Asociada a una violación al estándar de codificación.
@@ -326,7 +326,11 @@ Fue creado por Guido van Rossum a finales de los ochenta y el nombre del lenguaj
 
 De todos los lenguajes de programación aprendidos a lo largo de la carrera, he elegido Python por ser el que tiene una sintaxis más sencilla, es multiplataforma y porque es open source.
 \section{Django} 
+<<<<<<< HEAD
 Es un framework web que permite construir aplicaciones web con Python como lenguaje de back-end más rápido y con menos código. Su patrón de arquitectura de software es MVC, Modelo-Vista-Controlador~\cite{TheDjangoBook}:
+=======
+Es un framework web que permite construir aplicaciones web con Python como lenguaje de back-end más rápido y con menos código. Su patrón de arquitectura de software es MVC, Modelo-Vista-Controlador\cite{holovaty2009django}:
+>>>>>>> 358b2d15cd5c1435753b77c34571cc8f64c3ad1d
 	\begin{itemize}
 			\item Modelo: contiene el núcleo de la aplicación.
 			\item Vista: presenta la información obtenida del Modelo.
@@ -350,12 +354,12 @@ He elegido usar Bootstrap en este proyecto por que es un conjunto potente de her
 Es un sistema de gestión de bases de datos relacional desarrollado por Oracle. Funciona bien en sitios de mucho tráfico y permite múltiples consultas al mismo tiempo.
 
 \section{Hairball} 
-Como se ha mencionado antes, \texttt{Hairball} consiste en un plugin de Python que analiza estáticamente proyectos de Scratch, ofreciendo a su salida la siguiente información:
+Como se ha mencionado antes, \texttt{Hairball}\cite{boe2013hairball} consiste en un plugin de Python que analiza estáticamente proyectos de Scratch, ofreciendo a su salida la siguiente información:
 	 	\begin{itemize}
 			\item Habilidades generales del pensamiento computacional (abstracción, paralelismo, lógica, sincronización, control de flujo, interactividad con el usuario y representación de los datos).
 			\item Malos hábitos de programación: programas duplicados, código muerto, nombrado de objetos e inicialización de atributos.
 		\end{itemize}
-		\section{Scratch} 
+\section{Scratch} 
 Es un pseudo-lenguaje de programación basado en bloques, orientado a la enseñanza principalmente mediante la creación de videojuegos, historias, felicitaciones... La forma de programar en Scratch permite al usuario aprender rápidamente sin tener que aprender la sintaxis del lenguaje, centrándose en la lógica del programa. Scratch es, además, una gran comunidad de usuarios de los que aprender y con los que compartir los proyectos que se van creando, funcionando de una forma muy parecida a la que lo hace GitHub.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -676,7 +680,11 @@ Los enlaces a estas páginas se muestran al analizar un proyecto:
  		 			\caption{Acceso a páginas de ayuda.}
  		 			\label{fig:Acceso a paginas de ayuda.}
 			\end{figure}
+<<<<<<< HEAD
 En el ejemplo, si quisiéramos mejorar la habilidad ``Control de flujo'' pincharíamos sobre el y veríamos lo siguiente:
+=======
+En el ejemplo, si quisiéramos mejorar la habilidad ``Control de flujo" pincharíamos sobre el y veríamos lo siguiente:
+>>>>>>> 358b2d15cd5c1435753b77c34571cc8f64c3ad1d
 			\begin{figure}[H]
   				\centering
  		 			\includegraphics[width=7cm, keepaspectratio]{img/pag_ayuda1.jpg}
@@ -850,8 +858,13 @@ Finalmente destacar que el número de proyectos analizados es de 60.000 proyectos
 \cleardoublepage
 \chapter{Conclusiones}
 \label{chap:conclusiones}
+<<<<<<< HEAD
 Como se ha ido comentando a lo largo de esta memoria, hemos realizado distintos talleres en colegios tanto con niños como con profesores. El resultado que hemos tenido en todos ellos ha sido muy positivo. Los niños mostraban interés en mejorar su puntuación e incluso lo conseguían y retaban a sus compañeros. Cabe destacar un caso en el que una niña consiguió subir de 13 a 18 en una sola hora. 
 En cuanto a los profesores, hemos conseguido que se registren en Dr. Scratch, en la parte de organizaciones, unas 13 personas.
+=======
+Como se ha ido comentando a lo largo de esta memoria, hemos realizado distintos talleres en colegios tanto con niños como con profesores. El resultado que hemos tenido en todos ellos ha sido muy postivo. Los niños mostraban interés en mejorar su puntuación e incluso lo conseguían y retaban a sus compañeros. Cabe destacar un caso en el que una niña consiguió subir de 13 a 18 en una sola hora.\cite{moreno2014dr} 
+En cuanto a las organizaciones, son 13 las entidades que se han registrado para hacer uso de esta funcionalidad y analizar los proyectos de los alumnos participantes en sus iniciativas.
+>>>>>>> 358b2d15cd5c1435753b77c34571cc8f64c3ad1d
 
 Además de los talleres realizados, también organizamos un concurso de programación en Scratch en el que se promovían vocaciones científicas, es decir, los niños tenían que entregar un proyecto en Scratch que explicara algún concepto tecnológico, matemático, físico, etc. Participaron niños de primaria y secundaria de toda España. 
 La entrega de premios tuvo lugar en Campus Google de Madrid. Fue un emotivo encuentro entre todo el equipo de Dr. Scratch y los participantes del concurso, en el que finalmente se entregaron los premios de las dos categorías: primaria y secundaria. Los ganadores fueron tres niños y tres niñas, una de las cuales dio una pequeña charla motivadora a todas las niñas y mujeres de la sala. Cabe destacar que ésta última padece síndrome de Asperger.
@@ -919,8 +932,13 @@ Dr. Scratch puede ser extendido y optimizado de muchas formas:
 
 \section{Valoración personal}
 \label{sec:valoracion}
+<<<<<<< HEAD
 Hace poco más de un año, justo antes de empezar este proyecto, recuerdo que me dijeron: ``El proyecto de fin de grado no sirve para nada, no te esfuerces mucho...'' 
 Hoy, me doy cuenta de lo que ha significado para mí participar en este proyecto. Ha significado saber qué me gusta y qué no. Ha significado saber dónde me gustaría estar dentro de 10 años (la pregunta más difícil que me han hecho). Ha significado saber qué quiere decir la frase ``encuentra un trabajo que te guste y no tendrás que trabajar nunca más''.
+=======
+Hace poco más de un año, justo antes de empezar este proyecto, recuerdo que me dijeron: ``El proyecto de fin de grado no sirve para nada, no te esfuerces mucho..."  
+Hoy, me doy cuenta de lo que ha significado para mí participar en este proyecto. Ha significado saber qué me gusta y qué no. Ha significado saber dónde me gustaría estar dentro de 10 años (la pregunta más difícil que me han hecho). Ha significado saber qué quiere decir la frase ``encuentra un trabajo que te guste y no tendrás que trabajar nunca más".
+>>>>>>> 358b2d15cd5c1435753b77c34571cc8f64c3ad1d
 
 Aquí acaba una etapa de mi vida que no podría haber terminado mejor que habiendo realizado este proyecto, aunque estoy segura que la siguiente superará a esta y así continuamente... 
 
